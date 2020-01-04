@@ -1,0 +1,30 @@
+{
+  "name": "deep-observable-example-counter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "deep-observable": "file:../../",
+    "styled-components": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "html-webpack-plugin": "^3.0.0",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^3.0.0",
+    "webpack-dev-server": "^3.0.0"
+  }
+}
