@@ -58,11 +58,46 @@ const state = createObservable(initialState)
 const createObserver = createObserverFactory(state)
 
 const Counter = createObserver(() => {
-  return <span>{state.counter}</span>
+  return (
+    <span
+      children={state.counter}
+      onClick={() => state.counter++}
+    />
 })
-
-state.counter++
 ```
+
+## API
+
+```js
+createObservevable(object)
+```
+
+Creates an *observable* by wrapping the object with proxy. The function will
+traverse the object and wrap any nested objects so that property access can be
+tracked on any level.
+
+```js
+createObserverFactory(observable)
+```
+
+Creates higher-order function for React components and binds it to the
+observable.  Any decorated component will be tracked for read access to the
+observable and re-rendered when the observable get written.
+
+```js
+observable.commit(transaction)
+```
+
+Allows transaction-like write access to the observable. The `transaction`
+function will be called synchronously and observers will be notified
+only after its finish.
+
+```js
+observable.createWatch(component, callback)
+```
+
+Low-level function that wraps the component to listen for observable access.
+The *callback* function will be called on write access to the observable.
 
 ## Concepts
 
@@ -77,3 +112,4 @@ React components wrapped by the `createObserver` method will be linked to
 the observable's properties they track. Whenever there is a change in this
 property or beneath, the component will be updated. The observes are organized
 in a tree-like structure, so the update phase can be optimized.
+
