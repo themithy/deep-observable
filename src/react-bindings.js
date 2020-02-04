@@ -4,7 +4,9 @@ export function createObserverFactory(observable) {
 
   function createObserver(component) {
 
-    const Component = component
+    if (component.prototype.isReactComponent) {
+      throw "React class components cannot be wrapped!";
+    }
 
     const wrappedComponent = (props) => {
 
